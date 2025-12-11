@@ -6,11 +6,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class IntakeConstants {
     private static final int
-            MASTER_MOTOR_ID = 5,
-            FOLLOWER_MOTOR_ID = 6;
+            INTAKE_MOTOR_ID = 5,
+            CENTRALIZATION_MOTOR_ID = 6;
     static final WPI_TalonSRX
-            MASTER_MOTOR = new WPI_TalonSRX(MASTER_MOTOR_ID),
-            FOLLOWER_MOTOR = new WPI_TalonSRX(FOLLOWER_MOTOR_ID);
+            INTAKE_MOTOR = new WPI_TalonSRX(INTAKE_MOTOR_ID),
+            CENTRALIZATION_MOTOR = new WPI_TalonSRX(CENTRALIZATION_MOTOR_ID);
 
     private static final double VOLTAGE_LIMIT = 12.0;
 
@@ -25,20 +25,20 @@ public class IntakeConstants {
     }
 
     private static void configureMasterMotor() {
-        MASTER_MOTOR.configFactoryDefault();
-        MASTER_MOTOR.enableVoltageCompensation(true);
-        MASTER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        MASTER_MOTOR.setInverted(SHOULD_MASTER_MOTOR_INVERT_VALUE);
-        MASTER_MOTOR.setNeutralMode(NEUTRAL_MODE);
+        INTAKE_MOTOR.configFactoryDefault();
+        INTAKE_MOTOR.enableVoltageCompensation(true);
+        INTAKE_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
+        INTAKE_MOTOR.setInverted(SHOULD_MASTER_MOTOR_INVERT_VALUE);
+        INTAKE_MOTOR.setNeutralMode(NEUTRAL_MODE);
     }
 
     private static void configureFollowerMotor() {
-        FOLLOWER_MOTOR.configFactoryDefault();
-        FOLLOWER_MOTOR.enableVoltageCompensation(true);
-        FOLLOWER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        FOLLOWER_MOTOR.setInverted(SHOULD_FOLLOWER_MOTOR_INVERT_VALUE);
-        FOLLOWER_MOTOR.setNeutralMode(NEUTRAL_MODE);
-        FOLLOWER_MOTOR.follow(MASTER_MOTOR, FollowerType.PercentOutput);
+        CENTRALIZATION_MOTOR.configFactoryDefault();
+        CENTRALIZATION_MOTOR.enableVoltageCompensation(true);
+        CENTRALIZATION_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
+        CENTRALIZATION_MOTOR.setInverted(SHOULD_FOLLOWER_MOTOR_INVERT_VALUE);
+        CENTRALIZATION_MOTOR.setNeutralMode(NEUTRAL_MODE);
+        CENTRALIZATION_MOTOR.follow(INTAKE_MOTOR, FollowerType.PercentOutput);
     }
 
     public enum IntakeState {
