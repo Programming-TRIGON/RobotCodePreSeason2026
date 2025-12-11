@@ -13,28 +13,27 @@ public class IntakeConstants {
             FOLLOWER_MOTOR = new WPI_TalonSRX(FOLLOWER_MOTOR_ID);
 
     private static final double VOLTAGE_LIMIT = 12.0;
-
-    private static final boolean
-            MASTER_MOTOR_INVERTED_VALUE = true,
-            FOLLOWER_MOTOR_INVERTED_VALUE = false;
-    private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
-
     static final double MAX_SPINNING_SPEED = 1.0;
 
+    private static final boolean
+    SHOULD_MASTER_MOTOR_INVERT_VALUE = true,
+    SHOULD_FOLLOWER_MOTOR_INVERT_VALUE = false;
+    private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
+
     static {
-        configMotors();
+        configureMotors();
     }
 
-    private static void configMotors() {
+    private static void configureMotors() {
         MASTER_MOTOR.configFactoryDefault();
-        FOLLOWER_MOTOR.configFactoryDefault();
         MASTER_MOTOR.enableVoltageCompensation(true);
-        FOLLOWER_MOTOR.enableVoltageCompensation(true);
         MASTER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        FOLLOWER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
-        MASTER_MOTOR.setInverted(MASTER_MOTOR_INVERTED_VALUE);
-        FOLLOWER_MOTOR.setInverted(FOLLOWER_MOTOR_INVERTED_VALUE);
+        MASTER_MOTOR.setInverted(SHOULD_MASTER_MOTOR_INVERT_VALUE);
         MASTER_MOTOR.setNeutralMode(NEUTRAL_MODE);
+        FOLLOWER_MOTOR.configFactoryDefault();
+        FOLLOWER_MOTOR.enableVoltageCompensation(true);
+        FOLLOWER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
+        FOLLOWER_MOTOR.setInverted(SHOULD_FOLLOWER_MOTOR_INVERT_VALUE);
         FOLLOWER_MOTOR.setNeutralMode(NEUTRAL_MODE);
         FOLLOWER_MOTOR.follow(MASTER_MOTOR, FollowerType.PercentOutput);
     }
