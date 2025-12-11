@@ -43,9 +43,10 @@ public class ShooterConstants {
     }
 
     public enum ShooterState{
-        COLLECT_STATE(-12),
-        EJECT_STAGE(12),
-        REST(0);
+        REST(0),
+        COLLECT(-5),
+        SHOOT(5),
+        ASSIST_TRANSPORT(-0.5);
 
         public final double targetVoltage;
 
