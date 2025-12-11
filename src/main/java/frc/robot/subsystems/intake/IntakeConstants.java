@@ -13,23 +13,26 @@ public class IntakeConstants {
             FOLLOWER_MOTOR = new WPI_TalonSRX(FOLLOWER_MOTOR_ID);
 
     private static final double VOLTAGE_LIMIT = 12.0;
-    static final double MAX_SPINNING_SPEED = 1.0;
 
     private static final boolean
-    SHOULD_MASTER_MOTOR_INVERT_VALUE = true,
-    SHOULD_FOLLOWER_MOTOR_INVERT_VALUE = false;
+            SHOULD_MASTER_MOTOR_INVERT_VALUE = true,
+            SHOULD_FOLLOWER_MOTOR_INVERT_VALUE = false;
     private static final NeutralMode NEUTRAL_MODE = NeutralMode.Brake;
 
     static {
-        configureMotors();
+        configureMasterMotor();
+        configureFollowerMotor();
     }
 
-    private static void configureMotors() {
+    private static void configureMasterMotor() {
         MASTER_MOTOR.configFactoryDefault();
         MASTER_MOTOR.enableVoltageCompensation(true);
         MASTER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);
         MASTER_MOTOR.setInverted(SHOULD_MASTER_MOTOR_INVERT_VALUE);
         MASTER_MOTOR.setNeutralMode(NEUTRAL_MODE);
+    }
+
+    private static void configureFollowerMotor() {
         FOLLOWER_MOTOR.configFactoryDefault();
         FOLLOWER_MOTOR.enableVoltageCompensation(true);
         FOLLOWER_MOTOR.configVoltageCompSaturation(VOLTAGE_LIMIT);

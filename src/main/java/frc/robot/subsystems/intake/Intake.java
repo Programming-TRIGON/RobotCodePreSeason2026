@@ -17,7 +17,7 @@ public class Intake extends SubsystemBase {
         motor.setVoltage(targetVoltage);
     }
 
-    void stop(){
+    void stop() {
         motor.stopMotor();
     }
 }
