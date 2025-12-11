@@ -8,10 +8,10 @@ import frc.robot.RobotContainer;
 import java.util.function.Supplier;
 
 public class ShooterCommand {
-    public static Command getSetTargetState(ShooterConstants.ShooterState targetState) {
+    public static Command getSetTargetStateCommand(ShooterConstants.ShooterState targetState) {
         return new StartEndCommand(
                 () ->RobotContainer.SHOOTER.setTargetState(targetState),
-                () ->RobotContainer.SHOOTER.stop(),
+                RobotContainer.SHOOTER::stop,
                 RobotContainer.SHOOTER
         );
     }
@@ -19,7 +19,7 @@ public class ShooterCommand {
     public static Command getSetTargetVoltage(double targetVoltage) {
         return new StartEndCommand(
                 () ->RobotContainer.SHOOTER.setTargetVoltage(targetVoltage),
-                () ->RobotContainer.SHOOTER.stop(),
+                RobotContainer.SHOOTER::stop,
                 RobotContainer.SHOOTER
         );
     }
