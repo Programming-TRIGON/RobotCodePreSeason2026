@@ -1,11 +1,8 @@
-package frc.robot.subsystems;
+package frc.robot.subsystems.shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.FunctionalCommand;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import frc.robot.RobotContainer;
-
-import java.util.function.Supplier;
 
 public class ShooterCommand {
     public static Command getSetTargetStateCommand(ShooterConstants.ShooterState targetState) {
