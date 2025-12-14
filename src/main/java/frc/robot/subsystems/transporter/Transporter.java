@@ -9,15 +9,16 @@ public class Transporter extends SubsystemBase {
     public Transporter() {
     }
 
-    void setTargetVoltage(double targetVoltage) {
-        motor.setVoltage(targetVoltage);
-    }
-
     void setTargetState(TransporterConstants.TransporterState targetState) {
         setTargetVoltage(targetState.targetVoltage);
     }
 
+    void setTargetVoltage(double targetVoltage) {
+        motor.setVoltage(targetVoltage);
+    }
+
     void stop(){
-        setTargetVoltage(0);
+        TransporterConstants.MASTER_MOTOR.stopMotor();
+        TransporterConstants.FOLLOWER_MOTOR.stopMotor();
     }
 }
