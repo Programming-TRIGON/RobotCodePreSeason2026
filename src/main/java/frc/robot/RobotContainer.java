@@ -11,17 +11,17 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.IntakeCommands;
 import frc.robot.subsystems.intake.IntakeConstants;
-
+import frc.robot.subsystems.transporter.Transporter;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
     private static final CommandXboxController CONTROLLER = new CommandXboxController(0);
+    public static Transporter TRANSPORTER = new Transporter();
 
     public RobotContainer() {
         configureBindings();
     }
-
-
+    
     private void configureBindings() {
         CONTROLLER.rightTrigger().whileTrue(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.COLLECT_STATE));
     }
