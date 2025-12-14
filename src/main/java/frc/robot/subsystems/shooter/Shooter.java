@@ -9,15 +9,16 @@ public class Shooter extends SubsystemBase {
     public Shooter() {
     }
 
-    void setTargetVoltage(double targetVoltage) {
-        motor.setVoltage(targetVoltage);
-    }
-
     void setTargetState(ShooterConstants.ShooterState targetState) {
         setTargetVoltage(targetState.targetVoltage);
     }
 
+    void setTargetVoltage(double targetVoltage) {
+        motor.setVoltage(targetVoltage);
+    }
+
     void stop(){
-        setTargetVoltage(0);
+        ShooterConstants.MASTER_MOTOR.stopMotor();
+        ShooterConstants.FOLLOWER_MOTOR.stopMotor();
     }
 }
