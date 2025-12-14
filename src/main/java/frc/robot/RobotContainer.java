@@ -7,15 +7,13 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.intake.Intake;
-import frc.robot.subsystems.intake.IntakeCommands;
-import frc.robot.subsystems.intake.IntakeConstants;
+import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.transporter.Transporter;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
-    private static final CommandXboxController CONTROLLER = new CommandXboxController(0);
+    public static Shooter SHOOTER =  new Shooter();
     public static Transporter TRANSPORTER = new Transporter();
 
     public RobotContainer() {
@@ -23,10 +21,8 @@ public class RobotContainer {
     }
     
     private void configureBindings() {
-        CONTROLLER.rightTrigger().whileTrue(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.COLLECT_STATE));
     }
-
-
+    
     public Command getAutonomousCommand() {
         return Commands.print("No autonomous command configured");
     }
