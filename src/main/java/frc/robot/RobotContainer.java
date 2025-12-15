@@ -31,7 +31,9 @@ public class RobotContainer {
                 )
         );
 
-        DRIVER_CONTROLLER.rightTrigger().whileTrue(shootingTennisBallCommands.ShootTenisBall());
+        DRIVER_CONTROLLER.rightTrigger().whileTrue(
+                shootingTennisBallCommands.ShootTenisBall()
+        );
 
     }
     
