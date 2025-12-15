@@ -17,7 +17,7 @@ import frc.robot.commands.*;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
-    public static Shooter SHOOTER =  new Shooter();
+    public static Shooter SHOOTER = new Shooter();
     public static Transporter TRANSPORTER = new Transporter();
     public static final Tank TANK = new Tank();
     private static final CommandXboxController DRIVER_CONTROLLER = new CommandXboxController(0);
@@ -31,15 +31,15 @@ public class RobotContainer {
                 )
         );
 
-        DRIVER_CONTROLLER.rightTrigger().whileTrue(
+        DRIVER_CONTROLLER.a().whileTrue(
                 shootingTennisBallCommands.ShootTenisBall()
         );
 
     }
-    
+
     private void configureBindings() {
     }
-    
+
     public Command getAutonomousCommand() {
         return Commands.print("No autonomous command configured");
     }
