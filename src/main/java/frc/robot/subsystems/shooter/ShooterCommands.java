@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import frc.robot.RobotContainer;
 
-public class ShooterCommand {
+public class ShooterCommands {
     public static Command getSetTargetStateCommand(ShooterConstants.ShooterState targetState) {
         return new StartEndCommand(
                 () ->RobotContainer.SHOOTER.setTargetState(targetState),
