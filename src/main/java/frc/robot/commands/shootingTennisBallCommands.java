@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.subsystems.shooter.ShooterCommands;
 import frc.robot.subsystems.shooter.ShooterConstants;
 
-public class ShootingCommands extends ParallelCommandGroup {
+public class shootingTennisBallCommands extends ParallelCommandGroup {
     public static Command ShootTenisBall (){
         return new ParallelCommandGroup(
                 ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.SHOOT),
