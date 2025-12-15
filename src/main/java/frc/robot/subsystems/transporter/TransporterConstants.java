@@ -43,8 +43,8 @@ public class TransporterConstants {
     }
 
     public enum TransporterState{
-        COLLECT_STATE(-12),
-        EJECT_STAGE(12),
+        COLLECT_STATE(5),
+        EJECT_STAGE(-4),
         REST(0);
 
         public final double targetVoltage;
