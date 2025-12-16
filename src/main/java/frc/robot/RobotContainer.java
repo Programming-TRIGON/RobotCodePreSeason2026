@@ -31,13 +31,13 @@ public class RobotContainer {
                 )
         );
 
-        DRIVER_CONTROLLER.rightTrigger().whileTrue(
+        /*DRIVER_CONTROLLER.rightTrigger().whileTrue(
                 IntakeAndTransportTennisBallCommand.CollectTennisBall()
         );
 
         DRIVER_CONTROLLER.rightBumper().whileTrue(
                 IntakeAndTransportTennisBallCommand.EjectTennisBall()
-        );
+        );*/
     }
     
     private void configureBindings() {
