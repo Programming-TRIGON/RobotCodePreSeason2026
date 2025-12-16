@@ -13,6 +13,7 @@ import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.tank.Tank;
 import frc.robot.subsystems.tank.TankCommands;
 import frc.robot.subsystems.transporter.Transporter;
+import frc.robot.commands.*;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
@@ -29,6 +30,14 @@ public class RobotContainer {
                         DRIVER_CONTROLLER::getRightX
                 )
         );
+
+        /*DRIVER_CONTROLLER.rightTrigger().whileTrue(
+                IntakeAndTransportTennisBallCommand.CollectTennisBall()
+        );
+
+        DRIVER_CONTROLLER.rightBumper().whileTrue(
+                IntakeAndTransportTennisBallCommand.EjectTennisBall()
+        );*/
     }
     
     private void configureBindings() {
