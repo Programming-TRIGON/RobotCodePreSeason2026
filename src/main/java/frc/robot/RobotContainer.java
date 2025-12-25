@@ -19,6 +19,8 @@ import frc.robot.subsystems.shooter.ShooterConstants;
 import frc.robot.subsystems.tank.Tank;
 import frc.robot.subsystems.tank.TankCommands;
 import frc.robot.subsystems.transporter.Transporter;
+import frc.robot.subsystems.transporter.TransporterCommands;
+import frc.robot.subsystems.transporter.TransporterConstants;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
@@ -51,13 +53,11 @@ public class RobotContainer {
                 )
         );
 
-        SHOOTER.setDefaultCommand(
-                ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST)
-        );
+        SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
 
-        INTAKE.setDefaultCommand(
-                IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST)
-        )
+        INTAKE.setDefaultCommand(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST));
+
+        TRANSPORTER.setDefaultCommand(TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.REST));
     }
 
     private void bindControllerCommands() {
