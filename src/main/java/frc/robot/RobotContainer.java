@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.constants.OperatorConstants;
 import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.intake.IntakeCommands;
+import frc.robot.subsystems.intake.IntakeConstants;
 import frc.robot.subsystems.shooter.Shooter;
 import frc.robot.subsystems.shooter.ShooterCommands;
 import frc.robot.subsystems.shooter.ShooterConstants;
@@ -54,7 +56,7 @@ public class RobotContainer {
         );
 
         INTAKE.setDefaultCommand(
-                InstantCommand
+                IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST)
         )
     }
 
