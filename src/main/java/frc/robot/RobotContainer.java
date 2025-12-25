@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.GeneralCommands;
 import frc.robot.constants.OperatorConstants;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.IntakeCommands;
@@ -27,17 +28,9 @@ public class RobotContainer {
     public static Shooter SHOOTER = new Shooter();
     public static Transporter TRANSPORTER = new Transporter();
     public static final Tank TANK = new Tank();
-    private static final CommandXboxController DRIVER_CONTROLLER = new CommandXboxController(0);
 
     public RobotContainer() {
         configureBindings();
-        /*DRIVER_CONTROLLER.rightTrigger().whileTrue(
-                IntakeAndTransportTennisBallCommand.CollectTennisBall()
-        );
-
-        DRIVER_CONTROLLER.rightBumper().whileTrue(
-                IntakeAndTransportTennisBallCommand.EjectTennisBall()
-        );*/
     }
 
     private void configureBindings() {
@@ -46,17 +39,9 @@ public class RobotContainer {
     }
 
     private void bindDefaultCommands() {
-        TANK.setDefaultCommand(
-                TankCommands.getArcadeDriveCommand(
-                        DRIVER_CONTROLLER::getLeftY,
-                        DRIVER_CONTROLLER::getRightX
-                )
-        );
-
-        SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
-
+        TANK.setDefaultCommand(GeneralCommands.getTankDefaultCommand());
         INTAKE.setDefaultCommand(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST));
-
+        SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
         TRANSPORTER.setDefaultCommand(TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.REST));
     }
 
