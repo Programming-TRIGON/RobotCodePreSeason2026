@@ -7,6 +7,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.shooter.Shooter;
@@ -25,13 +26,6 @@ public class RobotContainer {
 
     public RobotContainer() {
         configureBindings();
-        TANK.setDefaultCommand(
-                TankCommands.getArcadeDriveCommand(
-                        DRIVER_CONTROLLER::getLeftY,
-                        DRIVER_CONTROLLER::getRightX
-                )
-        );
-
         /*DRIVER_CONTROLLER.rightTrigger().whileTrue(
                 IntakeAndTransportTennisBallCommand.CollectTennisBall()
         );
@@ -47,6 +41,20 @@ public class RobotContainer {
     }
 
     private void bindDefaultCommands() {
+        TANK.setDefaultCommand(
+                TankCommands.getArcadeDriveCommand(
+                        DRIVER_CONTROLLER::getLeftY,
+                        DRIVER_CONTROLLER::getRightX
+                )
+        );
+
+        SHOOTER.setDefaultCommand(
+                ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST)
+        );
+
+        INTAKE.setDefaultCommand(
+                InstantCommand
+        )
     }
 
     private void bindControllerCommands() {
