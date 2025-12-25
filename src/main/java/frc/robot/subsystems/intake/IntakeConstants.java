@@ -42,8 +42,8 @@ public class IntakeConstants {
     }
 
     public enum IntakeState {
-        COLLECT_STATE(-12.0),
-        EJECT_STATE(12.0),
+        COLLECT_STATE(-5),
+        EJECT_STATE(4),
         REST(0.0);
 
         public final double targetVoltage;
