@@ -7,7 +7,7 @@ import frc.robot.subsystems.intake.IntakeConstants;
 import frc.robot.subsystems.transporter.TransporterCommands;
 import frc.robot.subsystems.transporter.TransporterConstants;
 
-public class IntakeAndTransportTennisBallCommand {
+public class CollectingCommands {
     public static Command CollectTennisBall() {
         return new ParallelCommandGroup(
                 IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.COLLECT_STATE),
