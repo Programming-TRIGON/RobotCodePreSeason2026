@@ -12,13 +12,13 @@ import frc.robot.subsystems.transporter.TransporterConstants;
 public class ShootingCommands {
     public static Command ShootTennisBallCommand() {
         return new ParallelCommandGroup(
-                SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.SHOOT),
+                ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.SHOOT),
                 TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.COLLECT_STATE)
         );
     }
     public static Command EjectTennisBallFromShooter() {
         return new ParallelCommandGroup(
-                SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.EJECT),
+                ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.EJECT),
                 TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.COLLECT_STATE)
         );
     }

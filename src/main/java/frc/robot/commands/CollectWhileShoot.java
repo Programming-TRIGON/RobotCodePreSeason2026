@@ -14,7 +14,7 @@ import frc.robot.subsystems.transporter.TransporterConstants;
 public class CollectWhileShoot {
     public static Command CollectingAndShootingCommand(){
         return new ParallelCommandGroup(
-                SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.SHOOT),
+                ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.SHOOT),
                 IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.COLLECT_STATE),
                 TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.COLLECT_STATE)
         );

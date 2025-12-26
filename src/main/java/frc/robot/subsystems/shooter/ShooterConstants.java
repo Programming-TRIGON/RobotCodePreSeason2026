@@ -10,8 +10,8 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class ShooterConstants {
     private static final int
-            MASTER_MOTOR_ID = 9,
-            FOLLOWER_MOTOR_ID = 10;
+            MASTER_MOTOR_ID = 8,
+            FOLLOWER_MOTOR_ID = 9;
     static final WPI_TalonSRX
             MASTER_MOTOR = new WPI_TalonSRX(MASTER_MOTOR_ID),
             FOLLOWER_MOTOR = new WPI_TalonSRX(FOLLOWER_MOTOR_ID);

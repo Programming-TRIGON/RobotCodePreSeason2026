@@ -13,9 +13,9 @@ import frc.robot.constants.OperatorConstants;
 import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.IntakeCommands;
 import frc.robot.subsystems.intake.IntakeConstants;
-import frc.robot.subsystems.sparkShooter.SparkShooter;
-import frc.robot.subsystems.sparkShooter.SparkShooterCommands;
-import frc.robot.subsystems.sparkShooter.SparkShooterConstants;
+import frc.robot.subsystems.shooter.Shooter;
+import frc.robot.subsystems.shooter.ShooterCommands;
+import frc.robot.subsystems.shooter.ShooterConstants;
 import frc.robot.subsystems.tank.Tank;
 import frc.robot.subsystems.transporter.Transporter;
 import frc.robot.subsystems.transporter.TransporterCommands;
@@ -23,8 +23,8 @@ import frc.robot.subsystems.transporter.TransporterConstants;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
-    //   public static Shooter SHOOTER = new Shooter();
-    public static SparkShooter SPARK_SHOOTER = new SparkShooter();
+    public static Shooter SHOOTER = new Shooter();
+    //    public static SparkShooter SPARK_SHOOTER = new SparkShooter();
     public static Transporter TRANSPORTER = new Transporter();
     public static final Tank TANK = new Tank();
 
@@ -40,15 +40,14 @@ public class RobotContainer {
     private void bindDefaultCommands() {
         TANK.setDefaultCommand(GeneralCommands.getTankDefaultCommand());
         INTAKE.setDefaultCommand(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST));
-        //     SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
-        SPARK_SHOOTER.setDefaultCommand(SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.REST));
+        SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
+//        SPARK_SHOOTER.setDefaultCommand(SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.REST));
         TRANSPORTER.setDefaultCommand(TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.REST));
     }
 
     private void bindControllerCommands() {
         OperatorConstants.COLLECT.whileTrue(CollectingCommands.CollectTennisBall());
     }
-
 
     public Command getAutonomousCommand() {
         return Commands.print("No autonomous command configured");

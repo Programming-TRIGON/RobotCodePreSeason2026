@@ -7,7 +7,7 @@ import com.revrobotics.spark.config.SparkBaseConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class SparkShooterConstants {
-    private static final int MOTOR_ID = 8;
+    private static final int MOTOR_ID = 20;
 
     static final SparkMax MOTOR = new SparkMax(MOTOR_ID, SparkLowLevel.MotorType.kBrushless);
 
