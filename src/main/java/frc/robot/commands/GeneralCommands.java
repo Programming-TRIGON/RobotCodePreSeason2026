@@ -6,10 +6,10 @@ import frc.robot.subsystems.tank.TankCommands;
 
 public class GeneralCommands {
 
-    public static Command getTankDefaultCommand(){
+    public static Command getTankDefaultCommand() {
         return TankCommands.getArcadeDriveCommand(
-                OperatorConstants.DRIVER_CONTROLLER::getLeftY,
-                OperatorConstants.DRIVER_CONTROLLER::getRightX
+                () -> CommandConstants.calculateDriveStickAxisValue(OperatorConstants.DRIVER_CONTROLLER.getLeftY()),
+                () -> CommandConstants.calculateDriveStickAxisValue(OperatorConstants.DRIVER_CONTROLLER.getRightX())
         );
     }
 }
