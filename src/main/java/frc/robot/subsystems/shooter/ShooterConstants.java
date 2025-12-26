@@ -3,6 +3,10 @@ package frc.robot.subsystems.shooter;
 import com.ctre.phoenix.motorcontrol.FollowerType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.spark.SparkLowLevel;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 public class ShooterConstants {
     private static final int
@@ -11,7 +15,6 @@ public class ShooterConstants {
     static final WPI_TalonSRX
             MASTER_MOTOR = new WPI_TalonSRX(MASTER_MOTOR_ID),
             FOLLOWER_MOTOR = new WPI_TalonSRX(FOLLOWER_MOTOR_ID);
-
     private static final boolean
             SHOULD_MASTER_MOTOR_INVERT = true,
             SHOULD_FOLLOWER_MOTOR_INVERT = false;
@@ -41,14 +44,14 @@ public class ShooterConstants {
         FOLLOWER_MOTOR.follow(MASTER_MOTOR, FollowerType.PercentOutput);
     }
 
-    public enum ShooterState{
+    public enum ShooterState {
         REST(0),
         SHOOT(5),
         EJECT(2);
 
         public final double targetVoltage;
 
-        ShooterState(double targetVoltage){
+        ShooterState(double targetVoltage) {
             this.targetVoltage = targetVoltage;
         }
     }

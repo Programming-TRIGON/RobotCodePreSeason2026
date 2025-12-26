@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Transporter extends SubsystemBase {
-    private final WPI_TalonSRX motor = TransporterConstants.MASTER_MOTOR;
+    private final WPI_TalonSRX motor = TransporterConstants.MOTOR;
 
     public Transporter() {
     }
@@ -18,7 +18,7 @@ public class Transporter extends SubsystemBase {
     }
 
     void stop(){
-        TransporterConstants.MASTER_MOTOR.stopMotor();
+        TransporterConstants.MOTOR.stopMotor();
         TransporterConstants.FOLLOWER_MOTOR.stopMotor();
     }
 }
