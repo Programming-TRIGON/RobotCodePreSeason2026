@@ -7,42 +7,48 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.commands.CollectingCommands;
+import frc.robot.commands.GeneralCommands;
+import frc.robot.constants.OperatorConstants;
 import frc.robot.subsystems.intake.Intake;
+import frc.robot.subsystems.intake.IntakeCommands;
+import frc.robot.subsystems.intake.IntakeConstants;
 import frc.robot.subsystems.shooter.Shooter;
+import frc.robot.subsystems.shooter.ShooterCommands;
+import frc.robot.subsystems.shooter.ShooterConstants;
 import frc.robot.subsystems.tank.Tank;
-import frc.robot.subsystems.tank.TankCommands;
 import frc.robot.subsystems.transporter.Transporter;
-import frc.robot.commands.*;
+import frc.robot.subsystems.transporter.TransporterCommands;
+import frc.robot.subsystems.transporter.TransporterConstants;
 
 public class RobotContainer {
     public static final Intake INTAKE = new Intake();
-    public static Shooter SHOOTER =  new Shooter();
+    public static Shooter SHOOTER = new Shooter();
+    //    public static SparkShooter SPARK_SHOOTER = new SparkShooter();
     public static Transporter TRANSPORTER = new Transporter();
     public static final Tank TANK = new Tank();
-    private static final CommandXboxController DRIVER_CONTROLLER = new CommandXboxController(0);
 
     public RobotContainer() {
         configureBindings();
-        TANK.setDefaultCommand(
-                TankCommands.getArcadeDriveCommand(
-                        () -> -DRIVER_CONTROLLER.getLeftY(),
-                        DRIVER_CONTROLLER::getRightX
-                )
-        );
-
-        /*DRIVER_CONTROLLER.rightTrigger().whileTrue(
-                IntakeAndTransportTennisBallCommand.CollectTennisBall()
-        );
-
-        DRIVER_CONTROLLER.rightBumper().whileTrue(
-                IntakeAndTransportTennisBallCommand.EjectTennisBall()
-        );*/
     }
-    
+
     private void configureBindings() {
+        bindDefaultCommands();
+        bindControllerCommands();
     }
-    
+
+    private void bindDefaultCommands() {
+        TANK.setDefaultCommand(GeneralCommands.getTankDefaultCommand());
+        INTAKE.setDefaultCommand(IntakeCommands.getSetTargetStateCommand(IntakeConstants.IntakeState.REST));
+        SHOOTER.setDefaultCommand(ShooterCommands.getSetTargetStateCommand(ShooterConstants.ShooterState.REST));
+//        SPARK_SHOOTER.setDefaultCommand(SparkShooterCommands.getSetTargetStateCommand(SparkShooterConstants.SparkShooterState.REST));
+        TRANSPORTER.setDefaultCommand(TransporterCommands.getSetTargetStateCommand(TransporterConstants.TransporterState.REST));
+    }
+
+    private void bindControllerCommands() {
+        OperatorConstants.COLLECT.whileTrue(CollectingCommands.CollectTennisBall());
+    }
+
     public Command getAutonomousCommand() {
         return Commands.print("No autonomous command configured");
     }

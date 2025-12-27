@@ -4,7 +4,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Shooter extends SubsystemBase {
-    private final WPI_TalonSRX motor = ShooterConstants.MASTER_MOTOR;
+    private final WPI_TalonSRX motor = ShooterConstants.MOTOR;
 
     public Shooter() {
     }
@@ -18,7 +18,7 @@ public class Shooter extends SubsystemBase {
     }
 
     void stop(){
-        ShooterConstants.MASTER_MOTOR.stopMotor();
+        ShooterConstants.MOTOR.stopMotor();
         ShooterConstants.FOLLOWER_MOTOR.stopMotor();
     }
 }
